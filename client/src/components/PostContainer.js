@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 const PostContainer = () => {
   const [form, setForm] = useState({ title: "", text: "" });
 
-  const [post, setPost] = useState([]);
+  let [post, setPost] = useState([]);
   const history = useHistory();
 
   const onChange = (e) => {
@@ -15,11 +15,11 @@ const PostContainer = () => {
   const submitPost = async (e) => {
     e.preventDefault();
     try {
-      const newPost = await axios.post("/post", form, {
+      let newPost = await axios.post("/post", form, {
         headers: { "x-auth-token": localStorage.getItem("auth-token") },
       });
-      setPost([...post, newPost]);
-      history.push("/profile");
+      let post = newPost.data;
+      setPost([...post]);
     } catch (error) {
       console.log(error);
     }
@@ -35,11 +35,23 @@ const PostContainer = () => {
     }
   };
 
-  const updatePost = async () => {
+  const updatePost = async (e) => {
+    e.preventDefault();
+    if (post[e.target.value]) {
+      form["_id"] = post[e.target.value]._id;
+    }
     try {
       const updateUserPost = await axios.patch("/post/edit", form, {
         headers: { "x-auth-token": localStorage.getItem("auth-token") },
       });
+      for (let i = 0; i < post.length; i++) {
+        if (updateUserPost.data[0]._id === post[i]._id) {
+          console.log(post[i]);
+          post[i] = updateUserPost.data[0];
+          console.log(post[i]);
+          setPost([...post]);
+        }
+      }
       console.log(updateUserPost.data);
     } catch (err) {
       console.log(err, "hi");
@@ -79,7 +91,16 @@ const PostContainer = () => {
           <div key={index}>
             <h3>{post.title}</h3>
             <p>{post.text}</p>
-            <button onClick={updatePost}>Update</button>
+            <form onClick={(e) => updatePost(e)}>
+              <label>Title:</label>
+              <input onChange={onChange} type="text" name="title" />
+              <label>Text:</label>
+              <input onChange={onChange} type="text" name="text" />
+              <button value={index} type="submit">
+                Submit
+              </button>
+            </form>
+            {/* <button onClick={updatePost}>Update</button> */}
             <button onClick={deletePost}>Delete</button>
           </div>
         ))}

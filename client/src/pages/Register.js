@@ -23,6 +23,7 @@ const Register = () => {
 
   return (
     <div className="registerBody">
+      <video src="/Video/Video-5.mp4" autoPlay loop muted />
       <form className="registerForm" onSubmit={submit}>
         <h1 className="registerHeader">Register</h1>
         <input

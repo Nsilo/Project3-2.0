@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import UserContext from "../context/UserContext";
+import UserContext from "../context/userContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./pages.css";
@@ -40,6 +40,7 @@ const Login = () => {
 
   return (
     <div className="loginBody">
+      {/* <video src="/Video/Video-3.mp4" autoPlay loop muted /> */}
       <form className="loginForm" onSubmit={submitLogInForm}>
         <h1 className="loginHeader">Login</h1>
         <input
