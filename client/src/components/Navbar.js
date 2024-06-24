@@ -6,7 +6,6 @@ const Navbar = (props) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(false);
@@ -21,7 +20,7 @@ const Navbar = (props) => {
         <nav className="navbar">
           <div className="navbar-container">
             <Link to="/" className="navbar-logo">
-              GrooveIn
+              GroovIn
               <i className="fas fa-record-vinyl" />
             </Link>
             <div className="menu-icon" onClick={handleClick}>

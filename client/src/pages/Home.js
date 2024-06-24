@@ -1,11 +1,15 @@
 import React from "react";
+import '../App.css';
+import HeadSection from '../components/HeadSection';
+import Footer from '../components/Footer';
 
 const Home = (props) => {
   return (
-    <div>
-      <h1>Hello from Home</h1>
-    </div>
-  );
-};
-
+   <>
+    <HeadSection />
+    <Footer/>
+    </>
+   );
+ };
+ 
 export default Home;

@@ -5,10 +5,12 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Confirm from "./pages/Confirm";
-import UserContext from "./context/UserContext";
+import UserContext from "./context/userContext";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
 import ConfirmedAccount from "./pages/ConfirmedAccount";
+import Footer from './components/Footer';
+
 
 function App() {
   const [userData, setUserData] = useState({
@@ -47,6 +49,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <Router>
         <Navbar props={userData.user} logout={logOut} />
 
@@ -58,6 +61,7 @@ function App() {
             <Route path="/confirm" component={Confirm} />
             <Route path="/confirm_token/:token" component={ConfirmedAccount} />
             <Route path="/" component={Home} />
+            <Route path="/Footer" component={Footer} />
           </Switch>
         </UserContext.Provider>
       </Router>

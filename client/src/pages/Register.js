@@ -23,6 +23,7 @@ const Register = () => {
 
   return (
     <div className="registerBody">
+      <video src="/Video/Video-5.mp4" autoPlay loop muted />
       <form className="registerForm" onSubmit={submit}>
         <h1 className="registerHeader">Register</h1>
         <input
@@ -48,14 +49,14 @@ const Register = () => {
         <br />
         <input
           onChange={onChange}
-          type="text"
+          type="password"
           name="password"
           placeholder="password"
         />
         <br />
         <input
           onChange={onChange}
-          type="text"
+          type="password"
           name="passwordCheck"
           placeholder="Re-enter password"
         />

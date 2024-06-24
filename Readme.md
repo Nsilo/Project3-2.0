@@ -53,7 +53,7 @@ This project is licensed under the MIT license.
 ```
 Lester Gonzalez
 Kathy Trujillo
-Suban Bhusal
+Sudan Bhusal
 Jivaka Payne
 Franco Phan
 ```
